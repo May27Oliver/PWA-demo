@@ -1,4 +1,4 @@
-const baseURL = 'https://gist.githubusercontent.com/May27Oliver/e66c7238287b391d4f07bb578e72bd9a/raw/0a55d0d63e0b2b11381f96da1266a03e673ffff6/todoList.json';
+const baseURL = 'https://gist.githubusercontent.com/May27Oliver/e66c7238287b391d4f07bb578e72bd9a/raw/df1d1647e2b8f410fd47cf09187eab30543ff65d/todoList.json';
 
 //READ
 export const getTodos = async () => {
