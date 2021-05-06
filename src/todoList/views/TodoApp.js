@@ -3,12 +3,12 @@ import Header from './../Header';
 import AddToDo from './../AddToDo';
 import Todos from './../Todos';
 import Footer from './../Footer'
-// import {v4 as uuidv4} from 'uuid';
+import {v4 as uuidv4} from 'uuid';
 import { getTodos,createTodo, updateTodo, deleteTodo } from './../../api/todos'
 import './../App.css';
  
 let defaultTodos=[];
-const TodoApp = ({handleFBLogout}) => {
+const TodoApp = ({}) => {
     let [todos,setTodos] = useState(defaultTodos);//todoList array
     let [inputValue,setInputValue] = useState('');//input欄位的值 
     
@@ -27,11 +27,17 @@ const TodoApp = ({handleFBLogout}) => {
     const handleAddTodo = async() =>{
         if(inputValue.length!== 0){
             try{
-                const res = await createTodo({
-                    title:inputValue,
-                    isDone:false
-                });
-                setTodos(prevTodos=>[res,...prevTodos]);
+                const res = await createTodo(
+                    [
+                        ...todos,
+                        {
+                            name:inputValue,
+                            water_level:100,
+                            id:uuidv4(),
+                        }
+                    ]
+                );
+                setTodos(res);
             }catch(e){
                 console.log(e);
             }
@@ -56,8 +62,11 @@ const TodoApp = ({handleFBLogout}) => {
     
     //刪除todo事項
     const deletTodoItem = async (id) => { 
-        deleteTodo(id);
-        fetchData();
+        let newTodo = todos.filter(item=>{
+            return item.id !== id;
+        })
+        let res = await deleteTodo(newTodo);
+        setTodos(res);
     }
     
     //開啟關閉edit欄位
@@ -83,21 +92,27 @@ const TodoApp = ({handleFBLogout}) => {
 
     //儲存edit變更
     const handleSave = async(payload)=>{
-        const {id ,title, isDone} = payload;
-        updateTodo({
-            id,
-            title,
-            isDone
+        const {id ,name, isDone} = payload;
+        let newTodos = todos.map(item =>{
+            if(item.id === id){
+                return {
+                    id,
+                    name,
+                }
+            }else{
+                return item
+            }
         })
-        fetchData();
+        let res = await updateTodo(newTodos);
+        setTodos(res);
     }
 
     return (
         <>
             <Header/>
-            {/* <AddToDo handleAddTodo={handleAddTodo} inputValue={inputValue} handleChange={handleChange}/> */}
+            <AddToDo handleAddTodo={handleAddTodo} inputValue={inputValue} handleChange={handleChange}/>
             <Todos todos={todos} deletTodoItem = {deletTodoItem} handleIsDone={handleIsDone} handleSave={handleSave} triggerEditColumn={triggerEditColumn}/>
-            <Footer things = {todos.length} handleFBLogout={handleFBLogout}/>
+            <Footer things = {todos.length}/>
         </>
     )
 }

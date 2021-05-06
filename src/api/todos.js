@@ -1,53 +1,25 @@
-const baseURL = 'https://gist.githubusercontent.com/May27Oliver/e66c7238287b391d4f07bb578e72bd9a/raw/df1d1647e2b8f410fd47cf09187eab30543ff65d/todoList.json';
+import firebaseDB from './firebase';
 
+export const setNewFBData = async (payload) =>{
+    firebaseDB.ref('/').set(payload);
+    return await getTodos();
+}
 //READ
 export const getTodos = async () => {
-    let res = await fetch(baseURL,{});
-    let data = await res.json();
-    return data.info;
+    let dataFromFB = await (await firebaseDB.ref('/').once('value')).val();
+    return dataFromFB;
 }
 //CREATE
 export const createTodo = async (payload) => {
-    const { title, isDone } = payload;
-    const res = await fetch(`${baseURL}/todos/ `, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Facebook-Client-Token': localStorage.getItem('facebookClientToken'),
-        },
-        body: JSON.stringify({
-            title,
-            isDone
-        })
-    });
-    return await res.json();
+    return setNewFBData(payload);
 }
 
 //DELETE
-export const deleteTodo = async (id) => {
-    const res = await fetch(`${baseURL}/todos/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Facebook-Client-Token': localStorage.getItem('facebookClientToken'),
-        }
-    })
-
-    return res.json();
+export const deleteTodo = async (payload) => {
+    return setNewFBData(payload);
 }
 
 // UPDATE
 export const updateTodo = async (payload) => {
-    const { id, title, isDone } = payload;
-    const res = await fetch(`${baseURL}/todos/${id}`, {
-        method: 'PATCH',
-        headers: {
-            'Content-Type': 'application/json',
-            'Facebook-Client-Token': localStorage.getItem('facebookClientToken')
-        },
-        body: JSON.stringify({
-            title,
-            isDone
-        })
-    })
-    return res.json();
+    return setNewFBData(payload);
 }
