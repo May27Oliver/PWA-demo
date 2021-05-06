@@ -112,7 +112,7 @@ const TodoApp = ({}) => {
             <Header/>
             <AddToDo handleAddTodo={handleAddTodo} inputValue={inputValue} handleChange={handleChange}/>
             <Todos todos={todos} deletTodoItem = {deletTodoItem} handleIsDone={handleIsDone} handleSave={handleSave} triggerEditColumn={triggerEditColumn}/>
-            <Footer things = {todos.length}/>
+            <Footer things = {todos?todos.length:0}/>
         </>
     )
 }
