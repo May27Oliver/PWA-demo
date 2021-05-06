@@ -29,6 +29,7 @@
     "workbox-streams": "^5.1.3"
   },
   "scripts": {
+    "generate-sw": "workbox generate:sw",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
