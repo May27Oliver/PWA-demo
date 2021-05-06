@@ -27,16 +27,27 @@ const TodoApp = ({}) => {
     const handleAddTodo = async() =>{
         if(inputValue.length!== 0){
             try{
-                const res = await createTodo(
-                    [
-                        ...todos,
+                let res;
+                if(todos && todos.length > 0){
+                    res = await createTodo(
+                        [
+                            ...todos,
+                            {
+                                name:inputValue,
+                                water_level:100,
+                                id:uuidv4(),
+                            }
+                        ]
+                    );
+                }else{
+                    res = await createTodo([
                         {
                             name:inputValue,
                             water_level:100,
                             id:uuidv4(),
                         }
-                    ]
-                );
+                    ])
+                }
                 setTodos(res);
             }catch(e){
                 console.log(e);
@@ -62,9 +73,15 @@ const TodoApp = ({}) => {
     
     //刪除todo事項
     const deletTodoItem = async (id) => { 
-        let newTodo = todos.filter(item=>{
-            return item.id !== id;
-        })
+        let newTodo;
+        if(todos && todos.length > 0){
+            newTodo = todos.filter(item=>{
+                return item.id !== id;
+            })
+        }else{
+            newTodo = [];
+        }
+        
         let res = await deleteTodo(newTodo);
         setTodos(res);
     }
