@@ -40,7 +40,7 @@ const TaskItem = ({pk,deletTodoItem,handleIsDone,todo,triggerEditColumn,handleSa
                 <span className="task-item-body-text" onDoubleClick={()=>{
                     triggerEditColumn(todo.id,true)
                 }}>{tempTitle}</span>
-                <input className="task-item-body-input" type="text" placeholder="新增工作" 
+                <input className="task-item-body-input" type="text" placeholder="新增水庫" 
                     value={tempTitle} 
                     onChange={handleEditChange}
                     onDoubleClick={()=>triggerEditColumn(todo.id,false)}
