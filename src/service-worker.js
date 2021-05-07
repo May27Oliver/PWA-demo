@@ -85,7 +85,7 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
-registerRoute('wss://s-apse1b-nss-209.asia-southeast1.firebasedatabase.app/.ws?v=5&ns=todolistpractice-df8c0-default-rtdb',
+registerRoute('https://todolistpractice-df8c0-default-rtdb.asia-southeast1.firebasedatabase.app',
   new StaleWhileRevalidate({
     cacheName: 'firebase'
   })
