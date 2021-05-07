@@ -85,8 +85,8 @@ self.addEventListener('message', (event) => {
 });
 
 // Any other custom service worker logic can go here.
-// registerRoute('https://todolistpractice-df8c0-default-rtdb.asia-southeast1.firebasedatabase.app',
-//   new StaleWhileRevalidate({
-//     cacheName: 'firebase'
-//   })
-// )
+registerRoute('https://gist.githubusercontent.com/May27Oliver/e66c7238287b391d4f07bb578e72bd9a/raw/df1d1647e2b8f410fd47cf09187eab30543ff65d/todoList.json',
+  new StaleWhileRevalidate({
+    cacheName: 'Gist'
+  })
+)
