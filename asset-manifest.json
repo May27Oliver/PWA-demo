@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/PWA-demo/static/css/main.2c989e3b.chunk.css",
-    "main.js": "/PWA-demo/static/js/main.b87d730c.chunk.js",
-    "main.js.map": "/PWA-demo/static/js/main.b87d730c.chunk.js.map",
+    "main.css": "/PWA-demo/static/css/main.30e1ac02.chunk.css",
+    "main.js": "/PWA-demo/static/js/main.63e08d7c.chunk.js",
+    "main.js.map": "/PWA-demo/static/js/main.63e08d7c.chunk.js.map",
     "runtime-main.js": "/PWA-demo/static/js/runtime-main.3961943d.js",
     "runtime-main.js.map": "/PWA-demo/static/js/runtime-main.3961943d.js.map",
     "static/js/2.955eefd9.chunk.js": "/PWA-demo/static/js/2.955eefd9.chunk.js",
@@ -10,14 +10,14 @@
     "index.html": "/PWA-demo/index.html",
     "service-worker.js": "/PWA-demo/service-worker.js",
     "service-worker.js.map": "/PWA-demo/service-worker.js.map",
-    "static/css/main.2c989e3b.chunk.css.map": "/PWA-demo/static/css/main.2c989e3b.chunk.css.map",
+    "static/css/main.30e1ac02.chunk.css.map": "/PWA-demo/static/css/main.30e1ac02.chunk.css.map",
     "static/js/2.955eefd9.chunk.js.LICENSE.txt": "/PWA-demo/static/js/2.955eefd9.chunk.js.LICENSE.txt",
-    "static/media/App.css": "/PWA-demo/static/media/check-hover.5e00062b.svg"
+    "static/media/App.css": "/PWA-demo/static/media/check-hover.f1b1bcfd.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.3961943d.js",
     "static/js/2.955eefd9.chunk.js",
-    "static/css/main.2c989e3b.chunk.css",
-    "static/js/main.b87d730c.chunk.js"
+    "static/css/main.30e1ac02.chunk.css",
+    "static/js/main.63e08d7c.chunk.js"
   ]
 }
